@@ -10,6 +10,7 @@ import {
   createRoomAndGetRoomID,
   joinToRoomAndGetRoomID,
 } from "../../../redux/store/thunk-creators/lobby";
+import { setAuthPopup } from "../../../redux/store/action-creators/user";
 
 const MainPage = (): ReactElement => {
   const dispatch = useDispatch();
@@ -18,7 +19,8 @@ const MainPage = (): ReactElement => {
   const [link, updateLink] = useState<string>("");
 
   const openPopup = (): void => {
-    dispatch(toggleAuthMode());
+    // dispatch(toggleAuthMode());
+    dispatch(setAuthPopup(true));
   };
 
   const startNewGame = (): void => {

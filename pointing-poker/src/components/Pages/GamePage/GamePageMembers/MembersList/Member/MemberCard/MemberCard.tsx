@@ -5,11 +5,11 @@ import createDefaultCardImage from "../../../../../../../shared/helperFunctions/
 import { IMemberCard } from "../../../../../../../shared/interfaces/models";
 
 const MemberCard = (cardInfo: IMemberCard): ReactElement => {
-  const { name, position, logo } = cardInfo;
+  // const { name, position, logo } = cardInfo;
 
   return (
     <figure className="game-page__member-card">
-      {!logo ? (
+      {/* {!logo ? (
         <p className="game-page__member-card__image game-page__member-card__image_default">
           {createDefaultCardImage(name)}
         </p>
@@ -19,7 +19,7 @@ const MemberCard = (cardInfo: IMemberCard): ReactElement => {
       <figcaption>
         <h6 className="game-page__member-card__title">{name}</h6>
         {position && <p className="game-page__member-card__position">{position}</p>}
-      </figcaption>
+      </figcaption> */}
     </figure>
   );
 };

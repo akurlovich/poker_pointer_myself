@@ -1,8 +1,13 @@
+/* eslint-disable */ 
 import { Dispatch } from "react";
 import { User, UserAction, UserActionType } from "../../types/user";
 
 const setUser = (payload: User) => (dispatch: Dispatch<UserAction>) => {
   dispatch({ type: UserActionType.SET_USER, payload });
+};
+
+export const setAuthPopup = (payload: boolean) => (dispatch: Dispatch<UserAction>) => {
+  dispatch({ type: UserActionType.SET_AUTHPOPUP, payload });
 };
 
 export const setUsers =

@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import { UserAvatar } from "../../shared/interfaces/models";
 
 export interface User {
@@ -13,14 +14,20 @@ export interface User {
 export interface IUserState {
   currentUserId: string | null;
   users: User[];
-  loading: boolean;
+  isOpenAuthPopup: boolean;
 }
 
 export enum UserActionType {
+  SET_AUTHPOPUP = 'SET_AUTHPOPUP',
   SET_USER = "SET_USER",
   SET_USERS = "SET_USERS",
   SET_CURRENT_USER = "SET_CURRENT_USER",
   GET_USERS_SUCCESS = "GET_USERS_SUCCESS",
+}
+
+interface ISetAuthPopup {
+  type: UserActionType.SET_AUTHPOPUP;
+  payload: boolean;
 }
 
 interface ISetCurrentUser {
@@ -43,6 +50,7 @@ interface IGetUsersSuccess {
 }
 
 export type UserAction =
+  | ISetAuthPopup
   | ISetUsers
   | ISetUser
   | ISetCurrentUser

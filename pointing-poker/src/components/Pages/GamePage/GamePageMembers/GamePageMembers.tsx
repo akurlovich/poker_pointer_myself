@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { FC, ReactElement } from "react";
 import MembersList from "./MembersList/MembersList";
 
@@ -15,7 +16,7 @@ const GamePageMembers: FC = () => {
 
   return (
     <div>
-      <MembersList members={members} />
+      {/* <MembersList members={members} /> */}
     </div>
   );
 };

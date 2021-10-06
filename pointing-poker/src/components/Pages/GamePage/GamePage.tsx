@@ -17,7 +17,7 @@ const GamePage: FC = () => {
           <div className="game-page__scrum-block">
             <div className="game-page__scrum-info">
               <h5 className="lobby-info__title">Scram master:</h5>
-              <MemberCard name="Alex" position="lead software engineer" />
+              {/* <MemberCard name="Alex" position="lead software engineer" /> */}
             </div>
             <div className='game-page__scrum-btn'>
               <Button variant="light">Stop Game</Button>

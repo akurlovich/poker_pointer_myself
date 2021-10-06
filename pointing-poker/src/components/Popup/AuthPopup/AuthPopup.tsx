@@ -19,6 +19,7 @@ import toggleAuthMode, {
 } from "../../../redux/store/action-creators/auth";
 import { getAuthState } from "../../../redux/store/selectors";
 import validateEnteredValue from "../../../shared/helperFunctions/validateEnteredValue";
+import useTypedSelector from "../../../redux/hooks/useTypedSelector";
 
 export interface IAuthPopup {
   connect: (history: History) => void;
@@ -26,7 +27,9 @@ export interface IAuthPopup {
 const AuthPopup = ({ connect }: IAuthPopup): ReactElement => {
   const history = useHistory<History>();
   const dispatch = useDispatch();
-  const { isOpenAuthPopup } = useSelector(getAuthState);
+  // const { isOpenAuthPopup } = useSelector(getAuthState);
+  const { isOpenAuthPopup } = useTypedSelector((state) => state.user);
+
   const [formFields, updateFormFields] = useState<AuthFormData>(initFormValue);
   const [isObserver, toggleIsObserver] = useState(false);
   const [userAvatar, updateUserAvatar] = useState<UserAvatar>(null);
