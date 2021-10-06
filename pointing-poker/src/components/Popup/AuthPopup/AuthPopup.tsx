@@ -91,12 +91,15 @@ const AuthPopup = ({ connect }: IAuthPopup): ReactElement => {
       isObserver,
     };
 
+    console.log(formData);
+
     dispatch(setFormData(formData));
 
     connect(history);
 
-    // history.push("/lobby");
+    history.push("/lobby");
     closePopup();
+
   };
 
   return (
