@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { ChangeEvent, ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +21,7 @@ import toggleAuthMode, {
 import { getAuthState } from "../../../redux/store/selectors";
 import validateEnteredValue from "../../../shared/helperFunctions/validateEnteredValue";
 import useTypedSelector from "../../../redux/hooks/useTypedSelector";
+import { setAuthPopup } from "../../../redux/store/action-creators/user";
 
 export interface IAuthPopup {
   connect: (history: History) => void;
@@ -78,7 +80,8 @@ const AuthPopup = ({ connect }: IAuthPopup): ReactElement => {
   };
 
   const closePopup = (): void => {
-    dispatch(toggleAuthMode());
+    // dispatch(toggleAuthMode());
+    dispatch(setAuthPopup(false))
   };
 
   const submitForm = (): void => {
