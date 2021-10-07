@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { ReactElement, useEffect, useState } from "react";
 import "./lobbyHeader.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +12,7 @@ const LobbyHeader = (): ReactElement => {
   const dispatch = useDispatch();
   const { roomName, roomId } = useSelector(getLobbyState);
   const [isEditLobbyName, toggleIsEditLobbyName] = useState(false);
+  const [isLobbyName, setIsLobbyName] = useState(true);
 
   useEffect(() => {
     socket.emit(SocketEvent.ROOM_UPDATE_NAME, roomId, roomName);
@@ -20,8 +22,16 @@ const LobbyHeader = (): ReactElement => {
     dispatch(updateRoomName((inputElement as HTMLInputElement).value));
   };
 
+  const handlerEditBtn = () => {
+    toggleIsEditLobbyName(!isEditLobbyName);
+    if (roomName.length > 0) {
+      setIsLobbyName(false);
+    }
+  }
+
   return (
     <div className="lobby-header">
+      <div className={isLobbyName ? '' : 'show_lobby_name_none'}>Enter Lobby Name</div>
       {isEditLobbyName ? (
         <input
           type="text"
@@ -34,7 +44,7 @@ const LobbyHeader = (): ReactElement => {
       <button
         className="lobby-header__button"
         type="button"
-        onClick={() => toggleIsEditLobbyName(!isEditLobbyName)}
+        onClick={handlerEditBtn}
       >
         {isEditLobbyName ? <p>save</p> : <img src={EditImage} alt="pencil" />}
       </button>
