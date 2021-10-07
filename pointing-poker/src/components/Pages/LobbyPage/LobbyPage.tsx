@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { ReactElement, useEffect, useState } from "react";
 import "./lobbyPage.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +11,7 @@ import { getAuthState, getLobbyState } from "../../../redux/store/selectors";
 import setRoomName from "../../../redux/store/action-creators/lobby";
 import { IUser } from "../../../../../server/src/shared/interfaces/models";
 import setUser, { setUsers } from "../../../redux/store/action-creators/user";
+import GameSettings from "./GameSettings/GameSettings";
 
 const LobbyPage = (): ReactElement => {
   const dispatch = useDispatch();
@@ -65,6 +67,7 @@ const LobbyPage = (): ReactElement => {
       <LobbyInfo />
       <LobbyMembers />
       <LobbyIssues />
+      <GameSettings/>
     </section>
   );
 };
