@@ -69,6 +69,10 @@ const GameSettings = () => {
             </div>
           </div>
         </div>
+        <div className="setting__block">
+          <div className="setting__name">Add card values:</div>
+          
+        </div>
       </div>
     </div>
   );
