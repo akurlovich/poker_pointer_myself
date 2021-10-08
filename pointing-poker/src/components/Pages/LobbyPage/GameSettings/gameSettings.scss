@@ -11,6 +11,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &-cardvalue {
+      flex-direction: row;
+    }
   }
 
   &__name {
@@ -43,5 +47,44 @@
       }
     }
 
+  }
+
+  &__card-block {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  &__card {
+    width: 100px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #FFFFFF;
+    border: 3px solid #EEEEEE;
+
+    .custom {
+      justify-content: space-between;
+    }
+
+    &-img {
+      width: 50px;
+      height: 50px;
+    }
+
+    &-value {
+
+    }
+
+    &-value-top {
+
+    }
+
+    &-value-bottom {
+
+    }
   }
 }

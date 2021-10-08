@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import Countdown from 'react-countdown';
 import Timer from '../../../Timer/Timer';
 import './gameSettings.scss';
+import addCardIcon from '../../../../assets/images/add_card.png';
+import coffeeCardIcon from '../../../../assets/images/coffee_card.png';
 
 const GameSettings = () => {
   const [checked, setChecked] = useState(true);
@@ -69,9 +71,28 @@ const GameSettings = () => {
             </div>
           </div>
         </div>
-        <div className="setting__block">
+        <div className="setting__block-cardvalue">
           <div className="setting__name">Add card values:</div>
-          
+          <div className="setting__card-block">
+            <div className="setting__card">
+              <img className="setting__card-img" src={coffeeCardIcon} alt="" />
+            </div>
+            <div className="setting__card custom">
+              <div className="setting__card-value-top">
+                12
+              </div>
+              <div className="setting__card-value">
+                SP
+              </div>
+              <div className="setting__card-value-bottom">
+                12
+              </div>
+            </div>
+            <div className="setting__card"></div>
+            <div className="setting__card">
+              <img className="setting__card-img" src={addCardIcon} alt="" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
