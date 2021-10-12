@@ -66,7 +66,7 @@
     background: #FFFFFF;
     border: 3px solid #EEEEEE;
 
-    .custom {
+    custom {
       justify-content: space-between;
     }
 
@@ -76,15 +76,23 @@
     }
 
     &-value {
-
+      font-size: 42px;
+      font-weight: 800;
     }
 
     &-value-top {
-
+      align-self: flex-start;
+      padding: 5px;
     }
 
     &-value-bottom {
-
+      align-self: flex-end;
+      padding: 5px;
     }
   }
+}
+
+.custom {
+  justify-content: space-between;
+  flex-direction: column;
 }
