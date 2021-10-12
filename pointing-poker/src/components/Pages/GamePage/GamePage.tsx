@@ -2,7 +2,7 @@
 import React, { FC } from "react";
 import { Button } from "react-bootstrap";
 import MemberCard from "../../MemberCard/MemberCard";
-import Timer from "../../Timer/Timer";
+import Timer from "../../_Timer/Timer";
 import GamePageIssues from "./GamePageIssues/GamePageIssues";
 import GamePageMembers from "./GamePageMembers/GamePageMembers";
 import "./gamePage.scss";

@@ -1,37 +1,72 @@
-.timer-card {
-  width: 50px;
-  // position: relative;
-  display: flex;
-  align-items: center;
-  column-gap: 0.56rem;
-  box-shadow: 0 0.078rem 0.1rem 0.1rem rgba(0, 0, 0, 0.112);
-  border-radius: 0.3rem;
-  padding: 0.3rem 0.4rem 0.3rem 0;
-  // z-index: 2;
+.form__timer {
+	width: 135px;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	box-shadow: 3px 3px 10px 1px rgba(50, 50, 50, 0.8);
 
-  &__title {
-    font-size: 0.69rem;
-    font-weight: 300;
-  }
-
-  &__position {
-    font-size: 2rem;
-    font-weight: 400;
-    color: #3a3a3a;
-  }
+	&.disabled {
+		position: relative;
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(255, 255, 255, 0.7);
+		}
+	}
 }
 
-.run-time {
-  &__timer {
-    display: flex;
-  }
-
-  &__color {
-    font-size: 40px;
-  }
-
-  &__btns {
-    display: flex;
-  }
+.timer__item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
+.timer__title {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.timer__inp {
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: center;
+	padding: 3px;
+	width: 35px;
+	border: none;
+	border-radius: 5px;
+	outline-color: #46b5ff;
+	outline-width: 1px;
+	cursor: pointer;
+
+	&:focus {
+		box-shadow: inset 0 0 2px 3px rgba(50, 50, 50, 0.2);
+	}
+
+	&:disabled {
+		cursor: default;
+		background-color: white;
+		color: black;
+	}
+}
+
+.timer__double-dot {
+	cursor: default;
+	margin-top: 12px;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	/* display: none; <- Crashes Chrome on hover */
+	-webkit-appearance: none;
+	margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+	-moz-appearance: textfield; /* Firefox */
+}

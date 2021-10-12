@@ -61,14 +61,15 @@ const GameSettings = () => {
         <div className="setting__block">
           <div className="setting__name">Round time:</div>
           <div className="setting__timer">
-            <div className="setting__timer__input-block">
+            <Timer time={0}/>
+            {/* <div className="setting__timer__input-block">
               <label className="setting__timer__input-label">Minuts</label>
               <input className="setting__timer__input" type="number" defaultValue={0}/>
             </div>
             <div className="setting__timer__input-block">
               <label className="setting__timer__input-label">Seconds</label>
               <input className="setting__timer__input" type="number" defaultValue={0}/>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="setting__block-cardvalue">
