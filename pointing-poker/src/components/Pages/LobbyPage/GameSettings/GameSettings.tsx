@@ -18,6 +18,8 @@ const GameSettings = () => {
   const [checkedTimerNeeded, setCheckedTimerNeeded] = useState(true);
   const [scoreType, setScoreType] = useState('');
   const [scoreTypeShort, setScoreTypeShort] = useState('');
+  const [timerSeconds, setTimerSeconds] = useState(0);
+  const [timerMinuts, setTimerMinuts] = useState(0);
 
   const showSettings: ISettingsState = useTypedSelector(state => state.settings);
   const dispatch = useDispatch();
@@ -113,7 +115,7 @@ const GameSettings = () => {
         <div className="setting__block">
           <div className="setting__name">Round time:</div>
           <div className="setting__timer">
-            <Timer time={0}/>
+            {/* <Timer time={0}/> */}
             {/* <div className="setting__timer__input-block">
               <label className="setting__timer__input-label">Minuts</label>
               <input className="setting__timer__input" type="number" defaultValue={0}/>
@@ -122,6 +124,36 @@ const GameSettings = () => {
               <label className="setting__timer__input-label">Seconds</label>
               <input className="setting__timer__input" type="number" defaultValue={0}/>
             </div> */}
+            <div className={!false ? 'form__timer' : 'form__timer disabled'}>
+              <div className="timer__item">
+                <label htmlFor="minutes" className="timer__title">
+                  minutes
+                </label>
+                <input
+                  type="number"
+                  className="timer__inp"
+                  id="minutes"
+                  // disabled={isDisabled}
+                  value={timerMinuts}
+                  onChange={(e) => setTimerMinuts(+e.target.value)}
+                />
+              </div>
+				      <span className="timer__double-dot">:</span>
+              <div className="timer__item">
+                <label htmlFor="seconds" className="timer__title">
+                  seconds
+                </label>
+                <input
+                  type="number"
+                  className="timer__inp"
+                  id="seconds"
+                  data-testid="seconds"
+                  // disabled={isDisabled}
+                  value={timerSeconds}
+                  onChange={(e) => setTimerSeconds(+e.target.value)}
+                />
+              </div>
+			      </div>
           </div>
         </div>
         <div className="setting__block-cardvalue">
