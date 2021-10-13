@@ -8,18 +8,36 @@ import './gameSettings.scss';
 import addCardIcon from '../../../../assets/images/add_card.png';
 import coffeeCardIcon from '../../../../assets/images/coffee_card.png';
 import useTypedSelector from '../../../../redux/hooks/useTypedSelector';
+import { useDispatch } from 'react-redux';
+import setSettings from '../../../../redux/store/action-creators/settings';
+import { ISettingsState } from '../../../../redux/types/settings';
 
 const GameSettings = () => {
   const [checked, setChecked] = useState(true);
 
   const { scramMaster } = useTypedSelector(state => state.settings);
+  const dispatch = useDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
   };
+
+  const handlerSettings = () => {
+    const newSetLobby: ISettingsState = {
+      scramMaster: true,
+      changeCard: false,
+      timerNeeded: true,
+      scoreType: 'Stopy Point',
+      scoreTypeShort: 'SP',
+      roundTime: 300,
+      cardsValue: [12],
+    }
+    dispatch(setSettings(newSetLobby))
+  }
+
   return (
     <div>
-      <h3 className="lobby__title">Game settings:</h3>
+      <h3 className="lobby__title" onClick={handlerSettings}>Game settings:</h3>
       <div className="setting__main">
         <div className="setting__block">
           <div className="setting__name" onClick={() => console.log(scramMaster)}>Scram master as player:</div>
