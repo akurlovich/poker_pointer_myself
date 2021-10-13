@@ -7,9 +7,12 @@ import Timer from '../../../Timer/Timer';
 import './gameSettings.scss';
 import addCardIcon from '../../../../assets/images/add_card.png';
 import coffeeCardIcon from '../../../../assets/images/coffee_card.png';
+import useTypedSelector from '../../../../redux/hooks/useTypedSelector';
 
 const GameSettings = () => {
   const [checked, setChecked] = useState(true);
+
+  const { scramMaster } = useTypedSelector(state => state.settings);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
@@ -19,7 +22,7 @@ const GameSettings = () => {
       <h3 className="lobby__title">Game settings:</h3>
       <div className="setting__main">
         <div className="setting__block">
-          <div className="setting__name">Scram master as player:</div>
+          <div className="setting__name" onClick={() => console.log(scramMaster)}>Scram master as player:</div>
           <Switch
           checked={checked}
           onChange={handleChange}
