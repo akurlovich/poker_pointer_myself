@@ -13,22 +13,44 @@ import setSettings from '../../../../redux/store/action-creators/settings';
 import { ISettingsState } from '../../../../redux/types/settings';
 
 const GameSettings = () => {
-  const [checked, setChecked] = useState(true);
+  const [checkedScrumMaster, setcheckedScrumMaster] = useState(true);
+  const [chechedChangeCard, setChechedChangeCard] = useState(true);
+  const [checkedTimerNeeded, setCheckedTimerNeeded] = useState(true);
+  const [scoreType, setScoreType] = useState('');
+  const [scoreTypeShort, setScoreTypeShort] = useState('');
 
-  const { scramMaster } = useTypedSelector(state => state.settings);
+  const showSettings: ISettingsState = useTypedSelector(state => state.settings);
   const dispatch = useDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
+    switch (event.target.name) {
+      case 'scrummaster':
+        setcheckedScrumMaster(event.target.checked);
+        break;
+      case 'changecard':
+        setChechedChangeCard(event.target.checked);
+        break;
+      case 'timerneeded':
+        setCheckedTimerNeeded(event.target.checked);
+        break;
+      case 'scoretype':
+        setScoreType(event.target.value);
+        break;
+      case 'scoretypeshot':
+        setScoreTypeShort(event.target.value);
+        break;
+      default:
+        break;
+    }
   };
 
   const handlerSettings = () => {
     const newSetLobby: ISettingsState = {
-      scramMaster: true,
-      changeCard: false,
-      timerNeeded: true,
-      scoreType: 'Stopy Point',
-      scoreTypeShort: 'SP',
+      scramMaster: checkedScrumMaster,
+      changeCard: chechedChangeCard,
+      timerNeeded: checkedTimerNeeded,
+      scoreType: scoreType,
+      scoreTypeShort: scoreTypeShort,
       roundTime: 300,
       cardsValue: [12],
     }
@@ -40,17 +62,19 @@ const GameSettings = () => {
       <h3 className="lobby__title" onClick={handlerSettings}>Game settings:</h3>
       <div className="setting__main">
         <div className="setting__block">
-          <div className="setting__name" onClick={() => console.log(scramMaster)}>Scram master as player:</div>
+          <div className="setting__name" onClick={() => console.log(showSettings)}>Scram master as player:</div>
           <Switch
-          checked={checked}
-          onChange={handleChange}
-          inputProps={{ 'aria-label': 'controlled' }}
+            name='scrummaster'
+            checked={checkedScrumMaster}
+            onChange={handleChange}
+            inputProps={{ 'aria-label': 'controlled' }}
           />
         </div>
         <div className="setting__block">
           <div className="setting__name">Changing card in round end:</div>
           <Switch
-            checked={checked}
+            name='changecard'
+            checked={chechedChangeCard}
             onChange={handleChange}
             inputProps={{ 'aria-label': 'controlled' }}
           />
@@ -58,14 +82,18 @@ const GameSettings = () => {
         <div className="setting__block">
           <div className="setting__name">Is timer needed:</div>
           <Switch
-            checked={checked}
+            name='timerneeded'
+            checked={checkedTimerNeeded}
             onChange={handleChange}
             inputProps={{ 'aria-label': 'controlled' }}
           />
         </div>
         <div className="setting__block">
           <div className="setting__name">Score type:</div>
-          <TextField 
+          <TextField
+            value={scoreType}
+            onInput={handleChange}
+            name='scoretype'
             id="filled-size-small"
             variant="outlined"
             size="small"
@@ -73,7 +101,10 @@ const GameSettings = () => {
         </div>
         <div className="setting__block">
           <div className="setting__name">Score type (Short):</div>
-          <TextField 
+          <TextField
+            value={scoreTypeShort}
+            onInput={handleChange}
+            name='scoretypeshot'
             id="filled-size-small"
             variant="outlined"
             size="small"

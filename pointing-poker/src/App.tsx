@@ -15,20 +15,20 @@ function App(): ReactElement {
   const { isOpenChat } = useSelector(getChatState);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    socket.on(SocketEvent.CONNECT, () => {
-      console.info("Connection success", socket.id);
-    });
+  // useEffect(() => {
+  //   socket.on(SocketEvent.CONNECT, () => {
+  //     console.info("Connection success", socket.id);
+  //   });
 
-    socket.on(SocketEvent.MESSAGE_SEND, (message: IMessage) => {
-      dispatch(setNewMessage(message));
-    });
+  //   socket.on(SocketEvent.MESSAGE_SEND, (message: IMessage) => {
+  //     dispatch(setNewMessage(message));
+  //   });
 
-    return () => {
-      socket.off(SocketEvent.MESSAGE_SEND);
-      socket.off(SocketEvent.CONNECT);
-    };
-  }, []);
+  //   return () => {
+  //     socket.off(SocketEvent.MESSAGE_SEND);
+  //     socket.off(SocketEvent.CONNECT);
+  //   };
+  // }, []);
 
   return (
     <div className="app-container">

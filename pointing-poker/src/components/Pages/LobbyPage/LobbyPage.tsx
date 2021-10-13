@@ -19,47 +19,47 @@ const LobbyPage = (): ReactElement => {
   const { formData: userData } = useSelector(getAuthState);
   const { roomId: lobbyId } = useSelector(getLobbyState);
 
-  useEffect(() => {
-    if (lobbyId) {
-      socket.emit(SocketEvent.UPDATE_USERS_LIST, lobbyId, userData);
-    }
+  // useEffect(() => {
+  //   if (lobbyId) {
+  //     socket.emit(SocketEvent.UPDATE_USERS_LIST, lobbyId, userData);
+  //   }
 
-    return () => {
-      socket.off(SocketEvent.UPDATE_USERS_LIST);
-    };
-  }, [lobbyId]);
+  //   return () => {
+  //     socket.off(SocketEvent.UPDATE_USERS_LIST);
+  //   };
+  // }, [lobbyId]);
 
-  useEffect(() => {
-    socket.on(SocketEvent.JOIN_NOTIFY, (notification: string) => {
-      updateAlertMessage(notification);
+  // useEffect(() => {
+  //   socket.on(SocketEvent.JOIN_NOTIFY, (notification: string) => {
+  //     updateAlertMessage(notification);
 
-      setTimeout(() => {
-        updateAlertMessage(null);
-      }, 3000);
-    });
+  //     setTimeout(() => {
+  //       updateAlertMessage(null);
+  //     }, 3000);
+  //   });
 
-    socket.on(SocketEvent.GET_NEW_USER, (user: IUser) => {
-      dispatch(setUser(user));
-    });
+  //   socket.on(SocketEvent.GET_NEW_USER, (user: IUser) => {
+  //     dispatch(setUser(user));
+  //   });
 
-    socket.on(SocketEvent.GET_UPDATED_USERS_LIST, (users: IUser[]) => {
-      dispatch(setUsers(users));
-    });
+  //   socket.on(SocketEvent.GET_UPDATED_USERS_LIST, (users: IUser[]) => {
+  //     dispatch(setUsers(users));
+  //   });
 
-    socket.on(
-      SocketEvent.ROOM_UPDATE_NAME,
-      (roomId: string, newRoomName: string) => {
-        dispatch(setRoomName(newRoomName));
-      }
-    );
+  //   socket.on(
+  //     SocketEvent.ROOM_UPDATE_NAME,
+  //     (roomId: string, newRoomName: string) => {
+  //       dispatch(setRoomName(newRoomName));
+  //     }
+  //   );
 
-    return () => {
-      socket.off(SocketEvent.GET_NEW_USER);
-      socket.off(SocketEvent.JOIN_NOTIFY);
-      socket.off(SocketEvent.GET_UPDATED_USERS_LIST); // TODO: move out
-      socket.off(SocketEvent.ROOM_UPDATE_NAME); // TODO: move out
-    };
-  }, []);
+  //   return () => {
+  //     socket.off(SocketEvent.GET_NEW_USER);
+  //     socket.off(SocketEvent.JOIN_NOTIFY);
+  //     socket.off(SocketEvent.GET_UPDATED_USERS_LIST); // TODO: move out
+  //     socket.off(SocketEvent.ROOM_UPDATE_NAME); // TODO: move out
+  //   };
+  // }, []);
 
   return (
     <section className="lobby">

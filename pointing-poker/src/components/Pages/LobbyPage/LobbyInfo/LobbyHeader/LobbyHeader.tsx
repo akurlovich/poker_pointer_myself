@@ -14,9 +14,9 @@ const LobbyHeader = (): ReactElement => {
   const [isEditLobbyName, toggleIsEditLobbyName] = useState(false);
   const [isLobbyName, setIsLobbyName] = useState(true);
 
-  useEffect(() => {
-    socket.emit(SocketEvent.ROOM_UPDATE_NAME, roomId, roomName);
-  }, [roomName]);
+  // useEffect(() => {
+  //   socket.emit(SocketEvent.ROOM_UPDATE_NAME, roomId, roomName);
+  // }, [roomName]);
 
   const handleInput = (inputElement: EventTarget): void => {
     dispatch(updateRoomName((inputElement as HTMLInputElement).value));

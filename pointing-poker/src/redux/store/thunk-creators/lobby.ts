@@ -17,7 +17,7 @@ export const createRoomAndGetRoomID =
       dispatch(setCurrentUser(createdRoomId));
     };
 
-    socket.emit(SocketEvent.ROOM_CREATE, getRoomData);
+    // socket.emit(SocketEvent.ROOM_CREATE, getRoomData);
   };
 
 export const joinToRoomAndGetRoomID =
@@ -41,7 +41,7 @@ export const joinToRoomAndGetRoomID =
       }
     };
 
-    socket.emit(SocketEvent.ROOM_JOIN, roomId, getResultOfConnection);
+    // socket.emit(SocketEvent.ROOM_JOIN, roomId, getResultOfConnection);
   };
 
 export const leaveFromRoom =
@@ -52,5 +52,5 @@ export const leaveFromRoom =
       history.push("/");
     };
 
-    socket.emit(SocketEvent.LEAVE_ROOM, roomId, disconnect);
+    // socket.emit(SocketEvent.LEAVE_ROOM, roomId, disconnect);
   };
