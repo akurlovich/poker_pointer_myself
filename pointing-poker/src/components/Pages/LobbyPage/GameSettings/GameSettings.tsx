@@ -53,7 +53,7 @@ const GameSettings = () => {
       timerNeeded: checkedTimerNeeded,
       scoreType: scoreType,
       scoreTypeShort: scoreTypeShort,
-      roundTime: 300,
+      roundTime: timerMinuts * 60 + timerSeconds,
       cardsValue: [12],
     }
     dispatch(setSettings(newSetLobby))
